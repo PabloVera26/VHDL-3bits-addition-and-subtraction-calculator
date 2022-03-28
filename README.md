@@ -6,4 +6,4 @@ remember that u can make any change you want, but the name of the entity must be
 so if you are going to create your own project file you are free to change the name of the name file and entity,
 otherwise if you use my project, you can change the variables name but not the entity name.
 
-if you have any doubt or any problem with the code you can send me a message by linkedin and i will answer you as soon as possible.
+if you have any doubt or any problem with the code you can send me a message by linkedin and i will try answer you as soon as possible.
