@@ -1,3 +1,7 @@
+--code developed by Pablo Jahir Vera Sanchez
+--Computational Embedded Systems Engineer
+--Code used with FPGA DE10Lite
+
 -- libraries used for the code
 library ieee;
 use ieee.std_logic_1164.all;
@@ -14,7 +18,7 @@ end entity;
 architecture arq of juntos is
 signal mid: integer range -7 to 14;--here we declare a signal that will be where we are going to save the result
 begin
-with a select-- here we 
+with a select --here we show on the BCD display the number of a
 HEX1 <="0000001"when 0,
        "1001111" when 1,
        "0010010" when 2,
@@ -24,7 +28,7 @@ HEX1 <="0000001"when 0,
        "1100000" when 6,
        "0001111" when 7;
 		 
-with b select
+with b select --here we show on the BCD display the number of b
 HEX2 <= "0000001" when 0,
         "1001111" when 1,
         "0010010" when 2,
@@ -34,24 +38,24 @@ HEX2 <= "0000001" when 0,
         "1100000" when 6,
         "0001111" when 7;
 
-process(x)--here is the process where will be decided
+process(x)--here is the process where will be decided if it will be addition or substraction
 begin
 if(x='0')then
-mid<= a+b;
-HEX3<="1111111";
-HEX6<="1110110";
+mid<= a+b; --addition
+HEX3<="1111111";--turn off the display
+HEX6<="1110110";--I show the "=" symbol on the display
 else
-mid<=a-b;
-HEX3<="1111110";
-HEX6<="1110110";
+mid<=a-b; --substraction
+HEX3<="1111110";--I show the "-" symbol on the display
+HEX6<="1110110";--I show the "=" symbol on the display
 end if;
 end process;
 
-process(mid)
+process(mid)-- this is the process to show the results in the display
 begin
-if(mid<0)then
+if(mid<0)then-- this condition allow us to print number one in other display in case that the result is 2 numbers
 HEX4 <= "1111110";
-elsif(mid>9)then
+elsif(mid>9)then-- this condition allow us to in case the number is in a negative range is shown the "-" symbol
 HEX4 <= "1001111";
 else
 HEX4<="1111111";
